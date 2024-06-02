@@ -6,7 +6,7 @@
 </head>
 
 <body>
-    @yield('content')
+    <h1>Welcome to the PHP Laravel and MySQL Project🚀🚀🚀</h1>
 </body>
 
 </html>
