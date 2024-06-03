@@ -22,7 +22,7 @@
 <body class="bg-gray-100 flex items-center justify-center h-screen">
 
     <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h2 class="text-2xl font-bold mb-6 text-center">Create Product</h2>
+        <h2 class="text-2xl font-bold mb-6 text-center">Update Product</h2>
         <form enctype="multipart/form-data" action={{route('products.store')}} method="POST">
             @csrf
             <div class="mb-4">
