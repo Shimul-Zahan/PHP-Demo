@@ -28,6 +28,7 @@
             <div>
                 <a href="/products" class="text-white px-4">Home</a>
                 <a href="/products" class="text-white px-4">Products</a>
+                <a href="/carts" class="text-white px-4">Carts</a>
                 <a href="/products/create" class="text-white px-4">Create Product</a>
             </div>
         </div>

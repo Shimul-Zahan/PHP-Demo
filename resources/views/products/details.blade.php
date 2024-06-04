@@ -7,15 +7,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Simple PHP Crud Operations</title>
     <script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                colors: {
-                    clifford: '#da373d',
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        clifford: '#da373d',
+                    }
                 }
             }
         }
-    }
     </script>
 </head>
 
@@ -34,10 +34,8 @@
     </nav>
     <!-- details here -->
     <div class="min-h-[81vh] py-10">
-        <div
-            class="relative max-w-4xl py-10 mx-auto block overflow-hidden rounded-lg border border-gray-400 p-4 sm:p-6 lg:p-8">
-            <span
-                class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
+        <div class="relative max-w-4xl py-10 mx-auto block overflow-hidden rounded-lg border border-gray-400 p-4 sm:p-6 lg:p-8">
+            <span class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
 
             <div class="sm:flex sm:justify-between sm:gap-4">
                 <div>
@@ -68,19 +66,24 @@
                 </p>
             </div>
 
-            <dl class="mt-6 flex gap-4 sm:gap-6">
-                <div class="flex flex-col-reverse">
-                    <dt class="text-sm font-medium text-gray-600">Published</dt>
-                    <dd class="text-xs text-gray-500">
-                        {{\Carbon\Carbon::parse($product->created_at)->format('d M, Y')}}
-                    </dd>
-                </div>
+            <div class="flex justify-between icon-center">
+                <dl class="mt-6 flex gap-4 sm:gap-6">
+                    <div class="flex flex-col-reverse">
+                        <dt class="text-sm font-medium text-gray-600">Published</dt>
+                        <dd class="text-xs text-gray-500">
+                            {{\Carbon\Carbon::parse($product->created_at)->format('d M, Y')}}
+                        </dd>
+                    </div>
 
-                <div class="flex flex-col-reverse">
-                    <dt class="text-sm font-medium text-gray-600">Clicked time</dt>
-                    <dd class="text-xs text-gray-500">11 times</dd>
-                </div>
-            </dl>
+                    <div class="flex flex-col-reverse">
+                        <dt class="text-sm font-medium text-gray-600">Clicked time</dt>
+                        <dd class="text-xs text-gray-500">11 times</dd>
+                    </div>
+                </dl>
+                <button>
+                    <a href="{{route('products.cart',$product->id)}}" class="bg-black text-white py-2 px-8 rounded-sm">Add to cart</a>
+                </button>
+            </div>
         </div>
     </div>
     <!-- Footer -->
