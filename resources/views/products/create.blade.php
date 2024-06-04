@@ -23,7 +23,7 @@
 
     <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 class="text-2xl font-bold mb-6 text-center">Create Product</h2>
-        <form enctype="multipart/form-data" action={{route('products.store')}} method="POST">
+        <form enctype="multipart/form-data" action="{{route('products.store')}}" method="POST">
             @csrf
             <div class="mb-4">
                 <label for="name" class="block text-gray-700 font-bold mb-2">Product Name</label>

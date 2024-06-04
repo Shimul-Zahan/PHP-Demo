@@ -53,14 +53,21 @@
                         <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{{$product->name}}</td>
                         <td class="whitespace-nowrap px-4 py-2 text-gray-700">{{$product->sku}}</td>
                         <td class="whitespace-nowrap px-4 py-2 text-gray-700">{{$product->price}}</td>
-                        <td class="whitespace-nowrap px-4 py-2 text-gray-700">{{\Carbon\Carbon::parse($product->created_at)->format('d M, Y')}}</td>
+                        <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                            {{\Carbon\Carbon::parse($product->created_at)->format('d M, Y')}}
+                        </td>
                         <td class="whitespace-nowrap px-4 py-2">
                             <a href="{{route('products.edit', $product->id)}}" class="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700">
                                 Edit
                             </a>
-                            <a href="#" class="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700">
+                            <a href="#" onclick="deleteProduct('{{ $product->id }}')" class=" inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white
+                                hover:bg-indigo-700">
                                 Delete
                             </a>
+                            <form id="delete-product-form-{{ $product->id }}" action="{{ route('products.destroy', $product->id) }}" method="POST">
+                                @csrf
+                                @method('delete')
+                            </form>
                         </td>
                     </tr>
                     @endforeach
@@ -73,3 +80,11 @@
 </body>
 
 </html>
+
+<script>
+    function deleteProduct(id) {
+        if (confirm('Are you sure you want to delete this product?')) {
+            document.getElementById("delete-product-form-" + id).submit();
+        }
+    }
+</script>
