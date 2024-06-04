@@ -12,7 +12,7 @@ class product_controller
     // This method shows pages
     public function index()
     {
-        $products = Product::orderBy('created_at', 'DESC')->get();
+        $products = Product::orderBy('created_at', 'ASC')->get();
         return view('products.list', [
             'products' => $products
         ]);
@@ -132,5 +132,14 @@ class product_controller
 
         $product->delete();
         return redirect()->route('products.index')->with('success', 'Product deleted successfully');
+    }
+
+    // for details show
+    public function details($id)
+    {
+        $product = Product::findOrFail($id);
+        return view('products.details', [
+            'product' => $product
+        ]);
     }
 }
