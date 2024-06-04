@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Cart;
 use App\product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -142,4 +143,36 @@ class product_controller
             'product' => $product
         ]);
     }
+
+
+    public function addToCart($id)
+    {
+        // Retrieve the product by its ID
+        $product = Product::findOrFail($id);
+        $cart = new Cart();
+
+        echo $product;
+
+        $cart->name = $product->name;
+        $cart->sku = $product->sku;
+        $cart->price = $product->price;
+        $cart->description = $product->description;
+        $cart->save();
+
+        if ($product->image != '') {
+            $cart->image = $product->image;
+            $cart->save();
+        }
+
+        return redirect()->route('products.carts')->with('success', 'Product deleted successfully');
+    }
+
+    public function getAllCarts()
+    {
+        $products = Cart::orderBy('created_at', 'ASC')->get();
+        return view('products.carts', [
+            'carts' => $products
+        ]);
+    }
 }
+// getAllCarts
